@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 Flask
+=======
+>>>>>>> 827206eddeb2971072677769d8373c62a009215a
 numpy
 pandas
 scikit-learn
