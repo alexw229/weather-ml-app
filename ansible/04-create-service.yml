@@ -1,0 +1,9 @@
+- name: A playbook to create a Service for the weather app
+  hosts: localhost
+  user: ubuntu
+  become: no
+
+  tasks:
+  - name: 1. Expose the Deployment as a NodePort Service
+    shell:
+      cmd: kubectl expose deployment/weather-ml-app --type="NodePort" --port 5000 --name node-port-service

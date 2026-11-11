@@ -1,0 +1,9 @@
+- name: A playbook to deploy the weather app to Kubernetes
+  hosts: localhost
+  user: ubuntu
+  become: no
+
+  tasks:
+  - name: 1. Create the Deployment
+    shell:
+      cmd: kubectl create deployment weather-ml-app --image=alexw229/weather-ml-app:v1

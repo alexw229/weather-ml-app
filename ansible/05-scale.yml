@@ -1,0 +1,9 @@
+- name: A playbook to scale the weather app deployment
+  hosts: localhost
+  user: ubuntu
+  become: no
+
+  tasks:
+  - name: 1. Scale to 4 replicas
+    shell:
+      cmd: kubectl scale deployments/weather-ml-app --replicas=4

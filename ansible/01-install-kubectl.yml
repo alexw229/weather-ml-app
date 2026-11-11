@@ -1,0 +1,38 @@
+- name: A playbook to install kubectl on a VM
+  hosts: localhost
+  user: ubuntu
+  become: yes
+
+  tasks:
+  - name: 1. Update APT Package Manager
+    apt:
+      update_cache: yes
+
+  - name: 2. Install dependency packages
+    apt:
+      name={{ item }}
+    with_items:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gpg
+
+  - name: 3. Create the keyrings folder
+    shell:
+      cmd: mkdir -p -m 755 /etc/apt/keyrings
+
+  - name: 4. Get APT Key
+    shell:
+      cmd: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor --yes -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+  - name: 5. Add APT Repository
+    shell:
+      cmd: echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+  - name: 6. Update Package Manager
+    apt:
+      update_cache: yes
+
+  - name: 7. Install kubectl
+    shell:
+      cmd: snap install kubectl --classic
