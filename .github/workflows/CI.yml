@@ -1,10 +1,15 @@
-name: CI Pipeline
+# CI.yml - Task 4 (a) to (f)
+
+name: CI Pipeline                # CD.yml waits for this exact name
+
+# (a) Detect changes to the repository
 on:
   push:
     branches: [ main ]
+
 jobs:
   build-test-ship:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest                       # Week 5 (GitHub's own machine)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,9 +19,50 @@ jobs:
         with:
           python-version: '3.12'
 
+      # (b) Install Flask and dependencies in requirements.txt - Week 5
       - name: Install Dependencies
         run: |
           python3 -m venv flaskappenv
           source flaskappenv/bin/activate
-          pip install Flask
+          pip install Flask gunicorn
           pip install -r requirements.txt
+
+      # (c) Run each test file in a separate step - Week 4 commands
+      - name: Run smoke test
+        run: |
+          source flaskappenv/bin/activate
+          python3 -m unittest tests/smoke_test.py
+
+      - name: Run unit test
+        run: |
+          source flaskappenv/bin/activate
+          python3 -m unittest tests/unit_test.py
+
+      - name: Run integration test
+        run: |
+          source flaskappenv/bin/activate
+          python3 -m unittest tests/integration_test.py
+
+      # VIDEO: change v1 to v2 on the build, run and push lines below (and in CD.yml)
+      
+      # (d) Build a Docker image from the Dockerfile - Week 3 (docker image build)
+      - name: Build Docker Image
+        run: docker image build --tag ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1 .
+
+      # (e) Build test: launch a container and run a command inside it
+      #     Week 3: docker container run --detach --publish, docker ps, docker exec
+      - name: Build Test - launch container
+        run: |
+          docker container run --detach --publish 5000:5000 --name weather-ml-app ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
+          docker ps
+          docker exec weather-ml-app ls
+
+      # (f) Push the image to DockerHub
+      - name: Docker Login                       # Week 5
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push Docker Image                  # Week 3 (docker image push)
+        run: docker image push ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
