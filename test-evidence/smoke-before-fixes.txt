@@ -1,0 +1,7 @@
+test_get_form (smoke_test.TestAppSmoke.test_get_form) ... ok
+test_prediction_route_success (smoke_test.TestAppSmoke.test_prediction_route_success) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.267s
+
+OK

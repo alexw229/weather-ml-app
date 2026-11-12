@@ -1,0 +1,19 @@
+test_model_app_integration (integration_test.TestModelAppIntegration.test_model_app_integration) ... C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\app.py:11: ResourceWarning: unclosed file <_io.BufferedReader name='model/model.pkl'>
+  return pickle.load(open(model_path, 'rb'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\.venv312\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but MLPClassifier was fitted with feature names
+  warnings.warn(
+FAIL
+
+======================================================================
+FAIL: test_model_app_integration (integration_test.TestModelAppIntegration.test_model_app_integration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\tests\integration_test.py", line 29, in test_model_app_integration
+    self.assertNotIn(
+AssertionError: 'Error processing input:' unexpectedly found in '<!DOCTYPE html>\n<html>\n<head>\n    <title>Weather Classification Input</title>\n</head>\n<body>\n    <h1>Weather Classification:</h1>\n    <p><strong> Enter measurements below<strong><p>\n\n    \n    <p style="color:red;">Error processing input: dtype=&#39;numeric&#39; is not compatible with arrays of bytes/strings.Convert your data to numeric values explicitly instead.</p>\n    \n\n    <form method="POST" action="/">\n        <label>Temperature (F): <input type="number" step="any" name="temperature" required></label><br>\n        <label>Pressure: <input type="number" step="any" name="pressure" required></label><br>\n        <label>Humidity: <input type="number" step="any" name="humidity" required></label><br>\n        <label>Wind Speed: <input type="number" step="any" name="wind_speed" required></label><br>\n        <label>Wind Degree: <input type="number" step="any" name="wind_deg" required></label><br>\n        <label>Rain 1h: <input type="number" step="any" name="rain_1h"></label><br>\n        <label>Rain 3h: <input type="number" step="any" name="rain_3h"></label><br>\n        <label>Snow: <input type="number" step="any" name="snow"></label><br>\n        <label>Clouds: <input type="number" step="any" name="clouds"></label><br><br>\n        <button type="submit">Predict</button>\n    </form>\n</body>\n</html>' : Valid input should not display an error.
+
+----------------------------------------------------------------------
+Ran 1 test in 4.258s
+
+FAILED (failures=1)

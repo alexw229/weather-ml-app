@@ -1,0 +1,6 @@
+test_model_app_integration (tests.integration_test.TestModelAppIntegration.test_model_app_integration) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.017s
+
+OK

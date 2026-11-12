@@ -1,0 +1,33 @@
+test_model_app_integration (integration_test.TestModelAppIntegration.test_model_app_integration) ... ok
+test_get_form (smoke_test.TestAppSmoke.test_get_form) ... ok
+test_prediction_route_success (smoke_test.TestAppSmoke.test_prediction_route_success) ... ok
+test_clear_classification_output (unit_test.TestUnit.test_clear_classification_output) ... ok
+test_foggy_classification_output (unit_test.TestUnit.test_foggy_classification_output) ... FAIL
+test_model_can_be_loaded (unit_test.TestUnit.test_model_can_be_loaded) ... ok
+test_post_missing_field (unit_test.TestUnit.test_post_missing_field) ... ok
+test_rainy_classification_output (unit_test.TestUnit.test_rainy_classification_output) ... ok
+
+======================================================================
+FAIL: test_foggy_classification_output (unit_test.TestUnit.test_foggy_classification_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\alexw\OneDrive - GLASGOW CALEDONIAN UNIVERSITY\year-3\tri_A\dev_ops\github\weather-ml-app\tests\unit_test.py", line 84, in test_foggy_classification_output
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        class_result,
+        ^^^^^^^^^^^^^
+        'foggy',
+        ^^^^^^^^
+        'The supplied foggy example should return foggy.'
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 'cloudy' != 'foggy'
+- cloudy
++ foggy
+ : The supplied foggy example should return foggy.
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.853s
+
+FAILED (failures=1)

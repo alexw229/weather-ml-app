@@ -1,0 +1,58 @@
+test_clear_classification_output (unit_test.TestUnit.test_clear_classification_output) ... C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\app.py:11: ResourceWarning: unclosed file <_io.BufferedReader name='model/model.pkl'>
+  return pickle.load(open(model_path, 'rb'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\.venv312\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but MLPClassifier was fitted with feature names
+  warnings.warn(
+FAIL
+test_foggy_classification_output (unit_test.TestUnit.test_foggy_classification_output) ... C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\app.py:11: ResourceWarning: unclosed file <_io.BufferedReader name='model/model.pkl'>
+  return pickle.load(open(model_path, 'rb'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\.venv312\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but MLPClassifier was fitted with feature names
+  warnings.warn(
+FAIL
+test_model_can_be_loaded (unit_test.TestUnit.test_model_can_be_loaded) ... C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\app.py:11: ResourceWarning: unclosed file <_io.BufferedReader name='model/model.pkl'>
+  return pickle.load(open(model_path, 'rb'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_post_missing_field (unit_test.TestUnit.test_post_missing_field) ... ok
+test_rainy_classification_output (unit_test.TestUnit.test_rainy_classification_output) ... C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\.venv312\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but MLPClassifier was fitted with feature names
+  warnings.warn(
+FAIL
+
+======================================================================
+FAIL: test_clear_classification_output (unit_test.TestUnit.test_clear_classification_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\tests\unit_test.py", line 56, in test_clear_classification_output
+    self.assertEqual(
+AssertionError: 'cloudy' != 'clear'
+- cloudy
++ clear
+ : The supplied clear example should return clear.
+
+======================================================================
+FAIL: test_foggy_classification_output (unit_test.TestUnit.test_foggy_classification_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\tests\unit_test.py", line 84, in test_foggy_classification_output
+    self.assertEqual(
+AssertionError: 'cloudy' != 'foggy'
+- cloudy
++ foggy
+ : The supplied foggy example should return foggy.
+
+======================================================================
+FAIL: test_rainy_classification_output (unit_test.TestUnit.test_rainy_classification_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\denve\OneDrive\Documents\DevOps_CW2\weather-ml-app\tests\unit_test.py", line 70, in test_rainy_classification_output
+    self.assertEqual(
+AssertionError: 'cloudy' != 'rainy'
+- cloudy
++ rainy
+ : The supplied rainy example should return rainy.
+
+----------------------------------------------------------------------
+Ran 5 tests in 24.707s
+
+FAILED (failures=3)
