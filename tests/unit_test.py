@@ -74,6 +74,10 @@ class TestUnit(unittest.TestCase):
         )
 
     def test_foggy_classification_output(self):
+        #QA 03 Defect: The started instructions expect foggy for this input.
+        #A seperate check of the suplied model returns index 1 (cloudy).
+        #confirm the test input and class mapping before changing the expected result.
+        
         # Keep the expected result specified in the starter file.
         test_input = np.array([
             289.47, 1015, 88, 2, 300, 0, 0, 0, 20

@@ -1,0 +1,15 @@
+Model classes: [0 1 2 3 4 5 6 7 8]
+Predicted index: 1
+Mapped weather label: cloudy
+Starter test expects: foggy
+
+Model confidence for each class:
+  clear: 0.0%
+  cloudy: 60.6%
+  drizzly: 0.3%
+  foggy: 0.0%
+  hazey: 0.0%
+  misty: 2.5%
+  rainy: 0.7%
+  smokey: 0.0%
+  thunderstorm: 35.8%
