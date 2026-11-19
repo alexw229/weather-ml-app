@@ -47,13 +47,13 @@ jobs:
       
       # (d) Build a Docker image from the Dockerfile - Week 3 (docker image build)
       - name: Build Docker Image
-        run: docker image build --tag ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1 .
+        run: docker image build --tag ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v2 .
 
       # (e) Build test: launch a container and run a command inside it
       #     Week 3: docker container run --detach --publish, docker ps, docker exec
       - name: Build Test - launch container
         run: |
-          docker container run --detach --publish 5000:5000 --name weather-ml-app ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
+          docker container run --detach --publish 5000:5000 --name weather-ml-app ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v2
           docker ps
           docker exec weather-ml-app ls
 
@@ -65,4 +65,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Docker Image                  # Week 3 (docker image push)
-        run: docker image push ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
+        run: docker image push ${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v2
