@@ -69,7 +69,7 @@ class TestUnit(unittest.TestCase):
 
         self.assertEqual(
             class_result,
-            'rain',
+            'rainy',
             'The supplied rainy example should return rainy.'
         )
 

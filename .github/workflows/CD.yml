@@ -22,7 +22,7 @@ jobs:
       
       # Rolling update - Week 6 (kubectl set image deployments/NAME CONTAINER=IMAGE:TAG)
       - name: Rolling update to new image
-        run: kubectl set image deployments/weather-ml-app weather-ml-app=${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v2
+        run: kubectl set image deployments/weather-ml-app weather-ml-app=${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
 
       # Week 6 - kubectl get: shows the deployment and pods in the job log
       - name: Show deployment and pods
