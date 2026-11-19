@@ -73,7 +73,6 @@ class TestUnit(unittest.TestCase):
             'The supplied rainy example should return rainy.'
         )
 
-    @unittest.expectedFailure
     def test_foggy_classification_output(self):
         # D03 fix: The starter input [289.47, 1015, 88, 2, 300, 0, 0, 0, 20]
         # is classified as cloudy by the supplied model itself (60.6% cloudy,
