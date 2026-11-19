@@ -1,0 +1,31 @@
+# CD.yml - Task 4 (g): deploy passed builds to Kubernetes without disrupting service
+
+name: CD Pipeline
+
+# Start after CI finishes
+  workflow_run:
+    workflows: ["CI Pipeline"]     # must match the line at the top of CI.yml
+    types: [completed]
+
+jobs:
+  Deploy:
+    # Only deploy builds that PASSED CI (brief step g: "deploy passed builds")
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: self-hosted          
+
+    steps:
+      - name: Checkout code       
+        uses: actions/checkout@v4
+
+      # VIDEO: change v1 to v2 here AND in CI.yml in the same push
+      
+      # Rolling update - Week 6 (kubectl set image deployments/NAME CONTAINER=IMAGE:TAG)
+      - name: Rolling update to new image
+        run: kubectl set image deployments/weather-ml-app weather-ml-app=${{ secrets.DOCKERHUB_USERNAME }}/weather-ml-app:v1
+
+      # Week 6 - kubectl get: shows the deployment and pods in the job log
+      - name: Show deployment and pods
+        run: |
+          kubectl get deployments
+          kubectl get pods
