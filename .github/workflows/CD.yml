@@ -1,7 +1,7 @@
 # CD.yml - Task 4 (g): deploy passed builds to Kubernetes without disrupting service
 
 name: CD Pipeline
-
+on:
 # Start after CI finishes
   workflow_run:
     workflows: ["CI Pipeline"]     # must match the line at the top of CI.yml
