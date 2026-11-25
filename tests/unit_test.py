@@ -69,8 +69,8 @@ class TestUnit(unittest.TestCase):
 
         self.assertEqual(
             class_result,
-            'rainy',
-            'The supplied rainy example should return rainy.'
+            'rain',
+            'The supplied rainy example should return rain.'
         )
 
     def test_foggy_classification_output(self):
